@@ -47,7 +47,7 @@ using namespace quad;
 
 int main(int argc, char *argv[])
 {
-  ::ros::init(argc, argv, "hyq_urdf_visualizer");
+  ros::init(argc, argv, "hyq_urdf_visualizer");
 
   const std::string joint_desired_hyq = "xpp/joint_hyq_des";
 
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
   UrdfVisualizer hyq_desired(urdf, joint_names, "base", "world",
 			     joint_desired_hyq, "hyq_des");
 
-  ::ros::spin();
+  ros::spin();
 
   return 1;
 }

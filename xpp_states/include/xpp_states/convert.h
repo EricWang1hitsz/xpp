@@ -69,6 +69,11 @@ ToXpp(const xpp_msgs::StateLin3d& ros)
   return point;
 }
 
+// StateLin3d.msg
+
+// geometry_msgs/Point pos
+// geometry_msgs/Vector3 vel
+// geometry_msgs/Vector3 acc
 static xpp_msgs::StateLin3d
 ToRos(const StateLin3d& xpp)
 {
@@ -145,6 +150,11 @@ ToRos(const Eigen::Quaterniond xpp)
   return ros;
 }
 
+// State6d.msg
+
+// geometry_msgs/Pose     pose         # The 6D linear and angular position, orientation maps base to world
+// geometry_msgs/Twist    twist        # The 6D linear and angular velocity
+// geometry_msgs/Accel    accel        # The 6D linear and angular acceleration
 static xpp_msgs::State6d
 ToRos(const State3d& xpp)
 {
@@ -177,6 +187,17 @@ ToXpp(const xpp_msgs::State6d& ros)
   return xpp;
 }
 
+// RobotStateCartesian.msg
+
+// duration                time_from_start   # global time along trajectory
+
+// #Position, velocity and acceleration of the base expressed in world frame
+// #The orientation quaternion maps base to world frame.
+// State6d                 base              # base pos/vel/acc in world
+
+// StateLin3d[]            ee_motion         # endeffector pos/vel/acc in world
+// geometry_msgs/Vector3[] ee_forces         # endeffector forces expressed in world
+// bool[]                  ee_contact        # True if the foot is touching the environment
 static xpp_msgs::RobotStateCartesian
 ToRos(const RobotStateCartesian& xpp)
 {
@@ -213,13 +234,20 @@ ToXpp(const xpp_msgs::RobotStateCartesian& ros)
   return xpp;
 }
 
+// RobotStateCartesianTrajectory.msg
+
+// #The header is used to specify the coordinate frame and the reference time for the trajectory durations
+// std_msgs/Header header
+
+// #A representation of a Cartesian trajectory
+// RobotStateCartesian[] points
 static xpp_msgs::RobotStateCartesianTrajectory
 ToRos(const std::vector<RobotStateCartesian>& xpp)
 {
   xpp_msgs::RobotStateCartesianTrajectory msg;
 
   for (const auto state : xpp) {
-    auto state_msg = ToRos(state);
+    auto state_msg = ToRos(state); // To xpp_msgs::RobotStateCartesian
     msg.points.push_back(state_msg);
   }
 

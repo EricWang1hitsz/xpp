@@ -26,9 +26,11 @@ include_directories(
 # Declare a C++ library
 add_library(${PROJECT_NAME}
   src/hyqleg_inverse_kinematics.cc
+  src/leg_inverse_kinematics.cc
   src/inverse_kinematics_hyq1.cc
   src/inverse_kinematics_hyq2.cc
   src/inverse_kinematics_hyq4.cc
+  src/inverse_kinematics_bot.cc
 )
 
 ## URDF visualizers for all HyQ variants
@@ -46,6 +48,11 @@ target_link_libraries(urdf_visualizer_hyq2
 
 add_executable(urdf_visualizer_hyq4 src/exe/urdf_visualizer_hyq4.cc)
 target_link_libraries(urdf_visualizer_hyq4
+  ${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
+add_executable(urdf_visualizer_bot src/exe/urdf_visualizer_bot.cc)
+target_link_libraries(urdf_visualizer_bot
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
