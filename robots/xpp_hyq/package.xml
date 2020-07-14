@@ -30,4 +30,5 @@
   <depend>xacro</depend>
   <depend>roscpp</depend>
   <depend>xpp_vis</depend>
+  <depend>laikago_msgs</depend>
 </package>

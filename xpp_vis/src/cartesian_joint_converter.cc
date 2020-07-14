@@ -59,8 +59,11 @@ CartesianJointConverter::StateCallback (const xpp_msgs::RobotStateCartesian& car
   Eigen::Matrix3d B_R_W = cart.base_.ang.q.normalized().toRotationMatrix().inverse();
   EndeffectorsPos ee_B(cart.ee_motion_.GetEECount());
   for (auto ee : ee_B.GetEEsOrdered())
+  {
     ee_B.at(ee) = B_R_W * (cart.ee_motion_.at(ee).p_ - cart.base_.lin.p_);
-
+    ROS_INFO_STREAM("EE ID: " << ee << std::endl);
+    ROS_WARN_STREAM("EE pos IN Base: " << ee_B.at(ee) << std::endl);
+  }
   Eigen::VectorXd q =  inverse_kinematics_->GetAllJointAngles(ee_B).ToVec();
 
   xpp_msgs::RobotStateJoint joint_msg;
