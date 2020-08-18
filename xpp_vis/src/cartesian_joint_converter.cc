@@ -42,11 +42,11 @@ CartesianJointConverter::CartesianJointConverter (const InverseKinematics::Ptr& 
 {
   inverse_kinematics_ = ik;
 
-  ::ros::NodeHandle n;
-  cart_state_sub_ = n.subscribe(cart_topic, 1, &CartesianJointConverter::StateCallback, this);
+  ros::NodeHandle n;
+  cart_state_sub_ = n.subscribe(cart_topic, 1000, &CartesianJointConverter::StateCallback, this);
   ROS_DEBUG("Subscribed to: %s", cart_state_sub_.getTopic().c_str());
 
-  joint_state_pub_  = n.advertise<xpp_msgs::RobotStateJoint>(joint_topic, 1);
+  joint_state_pub_  = n.advertise<xpp_msgs::RobotStateJoint>(joint_topic, 1000);
   ROS_DEBUG("Publishing to: %s", joint_state_pub_.getTopic().c_str());
 }
 
@@ -71,6 +71,9 @@ CartesianJointConverter::StateCallback (const xpp_msgs::RobotStateCartesian& car
   // Attention: Not filling joint velocities or torques
 
   joint_state_pub_.publish(joint_msg);
+
+//  trajectory_.push_back(q);
+//  ROS_INFO_STREAM("trajectory size: " << trajectory_.Size() << std::endl);
 }
 
 } /* namespace xpp */

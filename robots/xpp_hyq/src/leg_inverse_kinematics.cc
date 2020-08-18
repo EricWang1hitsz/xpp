@@ -5,6 +5,7 @@
 
 #include <xpp_states/cartesian_declarations.h>
 
+#include <ros/ros.h>
 
 namespace xpp {
 
@@ -12,6 +13,8 @@ namespace xpp {
 legInverseKinematics::Vector3d
 legInverseKinematics::GetJointAngles (const Vector3d& ee_pos_H, KneeBend bend) const
 {
+
+  ROS_INFO_STREAM("EE Pos Hip << " << ee_pos_H[0] << " " << ee_pos_H[1] << " " << ee_pos_H[2] << std::endl);
   double q_HAA_bf, q_HAA_br, q_HFE_br; // rear bend of knees
   double q_HFE_bf, q_KFE_br, q_KFE_bf; // forward bend of knees
 
@@ -24,7 +27,9 @@ legInverseKinematics::GetJointAngles (const Vector3d& ee_pos_H, KneeBend bend) c
   xr = ee_pos_H;
 
   // compute the HAA angle
+  //!Eric_Wang: Hip frame is the same with Base's.
   q_HAA_bf = q_HAA_br = -atan2(xr[Y],-xr[Z]);
+//  q_HAA_bf = q_HAA_br = 0.0;
 
   // rotate into the HFE coordinate system (rot around X)
   R << 1.0, 0.0, 0.0, 0.0, cos(q_HAA_bf), -sin(q_HAA_bf), 0.0, sin(q_HAA_bf), cos(q_HAA_bf);

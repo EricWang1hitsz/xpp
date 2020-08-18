@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
   joint_names.at(n_j*LH + KFE) = "rear_left_3_joint";
   joint_names.at(n_j*RH + HAA) = "rear_right_1_joint";
   joint_names.at(n_j*RH + HFE) = "rear_right_2_joint";
-  joint_names.at(n_j*RH + KFE) = "rear_right_3_joint";
+  joint_names.at(n_j*RH + KFE) = "rear_right_3_joint"; //!Eric_Wang: joint state msgs order the same way with this.
 
   std::string urdf = "robot_description"; // rviz set param as robot_description.
   std::string base_name = "base_link";

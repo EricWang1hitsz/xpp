@@ -68,6 +68,9 @@ private:
   ros::Publisher  joint_state_pub_;
 
   InverseKinematics::Ptr inverse_kinematics_;
+
+//  Eigen::VectorXd<Eigen::VectorXd> trajectory_;
+
 };
 
 } /* namespace xpp */

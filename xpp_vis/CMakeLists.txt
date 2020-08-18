@@ -4,6 +4,7 @@ project(xpp_vis)
 add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
+find_package(Eigen3 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   tf
@@ -20,6 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## The catkin_package macro generates cmake config files for your package
 catkin_package(
    INCLUDE_DIRS include
+     ${EIGEN3_INCLUDE_DIR}
    LIBRARIES ${PROJECT_NAME}
    CATKIN_DEPENDS xpp_states xpp_msgs
 )
@@ -32,6 +34,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+    ${EIGEN3_INCLUDE_DIR}
 )
 
 # Declare a C++ library

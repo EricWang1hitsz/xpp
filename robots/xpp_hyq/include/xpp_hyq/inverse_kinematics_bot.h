@@ -15,7 +15,8 @@
 #pragma once
 
 #include <xpp_vis/inverse_kinematics.h>
-#include <xpp_hyq/leg_inverse_kinematics.h>
+//#include <xpp_hyq/leg_inverse_kinematics.h>
+#include <xpp_hyq/leg_inverse_kinematics_bot.h>
 
 namespace xpp {
 
@@ -24,23 +25,29 @@ namespace xpp {
  */
 class inverseKinematicsBot: public InverseKinematics {
 public:
-  inverseKinematicsBot() = default;
-  virtual ~inverseKinematicsBot() = default;
+//  inverseKinematicsBot() = default;
+  inverseKinematicsBot();
+//  virtual ~inverseKinematicsBot() = default;
+  ~inverseKinematicsBot();
 
   /**
    * @brief Returns joint angles to reach for a specific foot position.
    * @param pos_B  3D-position of the foot expressed in the base frame (B).
    */
-  Joints GetAllJointAngles(const EndeffectorsPos& pos_b) const override;
+//  Joints GetAllJointAngles(const EndeffectorsPos& pos_b) const override;
+  Joints GetAllJointAngles(const EndeffectorsPos& pos_b) override;
+
 
   /**
    * @brief Number of endeffectors (feet, hands) this implementation expects.
    */
-  int GetEECount() const override { return 4; };
+  int GetEECount() override { return 4; };
 
 private:
-  Vector3d base2hip_LF_ = Vector3d(0.420, 0.075, 0.0); //! eric_wang: Measure it from Solidworks.
-  legInverseKinematics leg_ik;
+//  Vector3d base2hip_LF_ = Vector3d(0.420, 0.075, 0.0); //! eric_wang: Measure it from Solidworks.
+  Vector3d base2hip_LF_ = Vector3d(0.400, 0.175, 0.0); //!Eric_Wang: see urdf file.
+//  legInverseKinematics leg_ik;
+  legInverseKinematicsX leg_ik;
 };
 
 } /* namespace xpp */
