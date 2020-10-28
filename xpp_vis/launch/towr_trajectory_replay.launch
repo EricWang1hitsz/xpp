@@ -1,0 +1,10 @@
+<launch>
+
+
+  <param name="/topic" value="/towr/nlp_iterations_name18" />
+  <param name="/filePath" value="/home/eric/.ros/dataAnalysis/towr_trajectory.bag" />
+  <!-- visualizes goal, opt. parameters and cartesian base state, endeffector positions and forces -->
+  <node name="towr_trajectory_read_node" pkg="xpp_vis" type="towr_trajectory_read_node" output="screen">
+  </node>
+
+</launch>

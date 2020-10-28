@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
   xpp_states
   xpp_msgs
+  rosbag
 )
 
 ###################################
@@ -54,6 +55,11 @@ target_link_libraries(rviz_marker_node
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
+
+add_executable(towr_trajectory_read_node src/towr_trajectory_read.cc)
+target_link_libraries(towr_trajectory_read_node
+    ${PROJECT_NAME}
+    ${catkin_LIBRARIES})
 
 
 #############

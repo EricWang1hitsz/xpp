@@ -14,11 +14,11 @@ legInverseKinematicsX::GetJointAngles (const Vector3d& ee_pos_B, std::string lim
 {
     Eigen::Vector3d jointPosition;
     Position foot_position(ee_pos_B);
-    ROS_INFO_STREAM("EE Pos In Base Frame << " << foot_position(0) << " " << foot_position(1) << " " << foot_position(2) << std::endl);
+    //ROS_INFO_STREAM("EE Pos In Base Frame << " << foot_position(0) << " " << foot_position(1) << " " << foot_position(2) << std::endl);
     JointPositionsLimb joint_positions, joint_positions_last;
 
     QK_->InverseKinematicsSolve(foot_position, limb, joint_positions_last, joint_positions, limbType);
-    ROS_INFO_STREAM("Limb Joint Pos << " << joint_positions(0) << " " << joint_positions(1) << " " << joint_positions(2) << std::endl);
+    //ROS_INFO_STREAM("Limb Joint Pos << " << joint_positions(0) << " " << joint_positions(1) << " " << joint_positions(2) << std::endl);
     jointPosition = Eigen::Vector3d(joint_positions.toImplementation());
 //    Position foot_position_in_hip = QK_.getPositionFootToHipInHipFrame(limb, foot_position);
 //    double px, py, pz; // foot position in hip frame.

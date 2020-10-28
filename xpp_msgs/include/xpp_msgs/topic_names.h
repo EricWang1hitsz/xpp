@@ -58,6 +58,12 @@ static const std::string robot_parameters("/xpp/params");
 
 // information about terrain normals and friction coefficients
 static const std::string terrain_info("/xpp/terrain_info");
+
+// Strive4G8ness: End effector swing trajectory.
+static const std::string lf_trajectory("/lf_trajectory");
+static const std::string rf_trajectory("/rf_trajectory");
+static const std::string lh_trajectory("/lh_trajectory");
+static const std::string rh_trajectory("/rh_trajectory");
 }
 
 #endif /* XPP_MSGS_TOPIC_NAMES_H_ */

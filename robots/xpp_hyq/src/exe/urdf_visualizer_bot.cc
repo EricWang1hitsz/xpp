@@ -35,12 +35,19 @@ int main(int argc, char *argv[])
 {
   ::ros::init(argc, argv, "quadruped_urdf_visualizer");
 
+  ros::NodeHandle nodehandle_;
+
+  std::string robot_state_desired_topic_;
+
+  nodehandle_.param("/robot_state_desired_topic", robot_state_desired_topic_, std::string("/xpp/state_des"));
+
   const std::string joint_desired = "xpp/joint_quadruped_des"; // state topic to subsribe.
 
   auto quadruped_ik = std::make_shared<inverseKinematicsBot>();
   // Converts a cartesian robot representation to joint angles.
   CartesianJointConverter inv_kin_converter(quadruped_ik,
-                        xpp_msgs::robot_state_desired, //! eric_wang: Subcribe desired robot state.
+                        //xpp_msgs::robot_state_desired, //! eric_wang: Subcribe desired robot state.
+                        robot_state_desired_topic_,
                         joint_desired); //! eric_wang: Publish converted joint state.
 
   // urdf joint names

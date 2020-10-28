@@ -57,28 +57,28 @@ inverseKinematicsBot::GetAllJointAngles(const EndeffectorsPos& eep_B)
         ee_pos_B = pos_B.at(ee);
         limbType_ = "IN_LEFT";
         limb_ = LimbEnum::LF_LEG;
-        ROS_INFO_STREAM("LF EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
+        //ROS_INFO_STREAM("LF EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
         break;
       case RF:
 //        ee_pos_H = pos_B.at(ee).cwiseProduct(Eigen::Vector3d(1,-1,1));
         ee_pos_B = pos_B.at(ee);
         limbType_ = "OUT_LEFT";
         limb_ = LimbEnum::RF_LEG;
-        ROS_INFO_STREAM("RF EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
+        //ROS_INFO_STREAM("RF EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
         break;
       case LH:
 //        ee_pos_H = pos_B.at(ee).cwiseProduct(Eigen::Vector3d(-1,1,1));
         ee_pos_B = pos_B.at(ee);
         limbType_ = "OUT_LEFT";
         limb_ = LimbEnum::LH_LEG;
-        ROS_INFO_STREAM("LH EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
+        //ROS_INFO_STREAM("LH EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
         break;
       case RH:
 //        ee_pos_H = pos_B.at(ee).cwiseProduct(Eigen::Vector3d(-1,-1,1));
         ee_pos_B = pos_B.at(ee);
         limbType_ = "IN_LEFT";
         limb_ = LimbEnum::RH_LEG;
-        ROS_INFO_STREAM("RH EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
+        //ROS_INFO_STREAM("RH EE Pos Base << " << ee_pos_B[0] << " " << ee_pos_B[1] << " " << ee_pos_B[2] << " " << std::endl);
         break;
       default: // joint angles for this foot do not exist
         break;
