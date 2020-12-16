@@ -118,7 +118,7 @@ RvizRobotBuilder::CreateEEPositions (const EEPos& ee_pos,
   for (auto ee : ee_pos.GetEEsOrdered()) {
     Marker m = CreateSphere(ee_pos.at(ee), 0.04);
     m.ns     = "endeffector_pos";
-    m.color  = color.blue;
+    m.color  = color.red;
 
     vec.push_back(m);
   }
@@ -299,7 +299,7 @@ RvizRobotBuilder::CreateRangeOfMotion (const State3d& base) const
     Vector3d edge_length = 2*Convert::ToXpp(params_msg_.ee_max_dev);
     Marker m  = CreateBox(pos_W, base.ang.q, edge_length);
     m.color   = color.blue;
-    m.color.a = 0.2;
+    m.color.a = 0.4;
     m.ns      = "range_of_motion";
     vec.push_back(m);
   }
@@ -371,8 +371,8 @@ RvizRobotBuilder::CreateSupportArea (const ContactState& contact_state,
     if (contact_state.at(ee)) { // endeffector in contact
       auto p = Convert::ToRos<geometry_msgs::Point>(ee_pos.at(ee));
       m.points.push_back(p);
-      m.color = color.black;
-      m.color.a = 0.2;
+//      m.color = color.pink;
+      m.color.a = 0.4;
     }
   }
 

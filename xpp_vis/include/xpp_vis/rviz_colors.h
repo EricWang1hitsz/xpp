@@ -51,19 +51,20 @@ struct ColorT {
     gray.r   =           gray.g   =           gray.b   = 0.7;
     white.b  =           white.g  =           white.r  = 1.0;
     red.r    = 1.0;      red.g    = 0.0;      red.b    = 0.0;
-    green.r  = 0.0;      green.g  = 150./255; green.b  = 76./255;
-    blue.r   = 0.0;      blue.g   = 102./255; blue.b   = 204./255;
-    dblue.r  = 0.0;      dblue.g  = 0./255;   dblue.b  = 128./255;
+    green.r  = 118./255;      green.g  = 238./255; green.b  = 0./255;
+    blue.r   = 30/255;      blue.g   = 144/255; blue.b   = 255/255;
+    dblue.r  = 0.0;      dblue.g  = 0./255;   dblue.b  = 255./255;
     brown.r  = 122./255; brown.g  = 61./255;  brown.b  = 0.0;
     yellow.r = 204./255; yellow.g = 204./255; yellow.b = 0.0;
     purple.r = 72./255;  purple.g = 61./255;  purple.b = 139./255;
-    wheat.r  = 245./355; wheat.g  = 222./355; wheat.b  = 179./355;
+    wheat.r  = 245./255; wheat.g  = 222./255; wheat.b  = 179./255;
+    pink.r = 255./255; pink.g = 130./255; pink.b = 171./255;
   };
 
   virtual ~ColorT() {};
 
   std_msgs::ColorRGBA red, green, blue, dblue, white, brown,
-                      yellow, purple, black, gray, wheat;
+                      yellow, purple, black, gray, wheat, pink;
 };
 
 static ColorT color; // create instance for efficient access
